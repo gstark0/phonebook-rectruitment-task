@@ -10,6 +10,11 @@ html, body {
     background-color: #F3F3F3;
 }
 
+.wrapper {
+    max-width: 500px;
+    margin: auto;
+}
+
 #navbar {
     height: 70px;
     width: 100%;
@@ -25,4 +30,20 @@ html, body {
     font-size: 20px;
     text-decoration: none;
     font-weight: bold;
+}
+
+.container-titlebar {
+    display: flex;
+    align-items: center;
+    margin-top: 75px;
+}
+
+.container-title {
+    font-size: 24px;
+}
+
+#add-contact-btn {
+    margin-left: auto;
+    color: #222;
+    font-size: 16px;
 }
