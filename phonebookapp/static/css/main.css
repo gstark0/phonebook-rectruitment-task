@@ -7,4 +7,22 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #F3F3F3;
+}
+
+#navbar {
+    height: 70px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    color: #222;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
 }
