@@ -35,7 +35,8 @@ html, body {
 .container-titlebar {
     display: flex;
     align-items: center;
-    margin-top: 75px;
+    margin: 75px 0 10px 0;
+    padding: 0 40px;
 }
 
 .container-title {
@@ -46,4 +47,86 @@ html, body {
     margin-left: auto;
     color: #222;
     font-size: 16px;
+}
+
+.window {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+    width: 100%;
+}
+
+#contacts-container {
+
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(0, 0, 0, .30);
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(0, 0, 0, .30);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(0, 0, 0, .30);
+}
+
+#search {
+    width: calc(100% - 80px);
+    background-color: #EAEAEA;
+    border: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    font-size: 16px;
+    height: 70px;
+    padding: 0 40px;
+    color: #222;
+}
+
+.contact {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.contact + .contact {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.contact-left {
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-right {
+    margin-right: 40px;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+}
+
+.contact-right a {
+    color: #222;
+}
+
+.contact-name {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+}
+
+.contact-detail {
+    font-size: 14px;
+    color: #A0A0A0;
+}
+
+.no-link {
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
 }
