@@ -52,10 +52,7 @@ html, body {
 .window {
     box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
     width: 100%;
-}
-
-#contacts-container {
-
+    background-color: white;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -129,4 +126,43 @@ html, body {
     text-decoration: none;
     pointer-events: none;
     cursor: default;
+}
+
+/* ------ Edit/Add person ------ */
+#edit-container {
+    padding: 20px 40px;
+    width: calc(100% - 80px);
+    display: flex;
+    flex-direction: column;
+}
+
+#edit-container input {
+    width: calc(100% - 40px);
+    height: 45px;
+    background-color: #EFEFEF;
+    border: none;
+    font-size: 16px;
+    padding: 0 20px;
+    outline: none;
+}
+
+#edit-container input + input {
+    margin-top: 10px;
+}
+
+.edit-btns {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.edit-btns a {
+    color: #222;
+    font-size: 16px;
+}
+
+.edit-btns a + a {
+    margin-left: 15px;
 }

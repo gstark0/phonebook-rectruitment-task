@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ksiązka telefoniczna</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+    <div id="navbar">
+        <a id="logo" href="#">Ksiązka telefoniczna</a>
+    </div>
+
+    <div class="container">
+        <div class="wrapper">
+            <div class="container-titlebar">
+                <div class="container-title">Edytuj osobę</div>
+            </div>
+            <div class="window" id="edit-container">
+                <input type="text" name="person" id="person" placeholder="Imię i nazwisko">
+                <input type="text" name="phone" id="phone" placeholder="Numer telefonu">
+                <input type="text" name="email" id="email" placeholder="Adres email">
+                <div class="edit-btns">
+                    <a href="#">Zapisz</a>
+                    <a href="#">Anuluj</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

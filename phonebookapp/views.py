@@ -6,8 +6,11 @@ from django.template import loader
 def index(request):
     return render(request, 'phonebookapp/index.html')
 
+def addPerson(request, person_id):
+    return render(request, 'phonebookapp/add.html')
+
 def editPerson(request, person_id):
-    return HttpResponse(person_id)
+    return render(request, 'phonebookapp/edit.html')
 
 def deletePerson(request, person_id):
     return HttpResponse(person_id)
