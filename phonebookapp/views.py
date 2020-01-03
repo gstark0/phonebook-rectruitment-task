@@ -12,14 +12,18 @@ def index(request):
     phones = Phone.objects.all()
     return render(request, 'phonebookapp/index.html', {'people': people})
 
-@require_http_methods(['POST'])
+@csrf_exempt
+@require_http_methods(['GET', 'POST'])
 def addPerson(request):
-    name = request.POST.get('name')
-    surname = request.POST.get('surname')
-
-    print(name, surname)
-
-    return render(request, 'phonebookapp/add.html')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+        new_person = Person(name=name, surname=surname)
+        new_person.save()
+        
+        return redirect('/phonebook')
+    else:
+        return render(request, 'phonebookapp/add.html')
 
 def addPhone(request):
     return HttpResponse('Works')
