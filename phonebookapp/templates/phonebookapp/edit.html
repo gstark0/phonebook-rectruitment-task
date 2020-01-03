@@ -20,15 +20,14 @@
             <div class="container-titlebar">
                 <div class="container-title">Edytuj osobę</div>
             </div>
-            <div class="window" id="edit-container">
-                <input type="text" name="person" id="person" placeholder="Imię i nazwisko">
-                <input type="text" name="phone" id="phone" placeholder="Numer telefonu">
-                <input type="text" name="email" id="email" placeholder="Adres email">
+            <form class="window" id="edit-container" action="../edit/" method="POST">
+                <input type="text" name="name" id="name" placeholder="Imię" value="{{ name }}">
+                <input type="text" name="surname" id="surname" placeholder="Nazwisko" value="{{ surname }}">
                 <div class="edit-btns">
-                    <a href="#">Zapisz</a>
-                    <a href="#">Anuluj</a>
+                    <input type="submit" value="Zapisz">
+                    <a href="../..">Anuluj</a>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>

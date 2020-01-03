@@ -136,7 +136,7 @@ html, body {
     flex-direction: column;
 }
 
-#edit-container input {
+#edit-container input[type=text] {
     width: calc(100% - 40px);
     height: 45px;
     background-color: #EFEFEF;
@@ -158,11 +158,19 @@ html, body {
     margin-top: 20px;
 }
 
-.edit-btns a {
+.edit-btns a, .edit-btns input {
     color: #222;
     font-size: 16px;
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    display: block;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
 }
 
-.edit-btns a + a {
+.edit-btns a {
     margin-left: 15px;
 }
