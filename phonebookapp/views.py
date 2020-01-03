@@ -12,7 +12,7 @@ from .models import Person, Phone, Email
 
 # Create your views here.
 def index(request):
-    people = Person.objects.all()
+    people = Person.objects.order_by('surname')
     phones = Phone.objects.all()
     emails = Email.objects.all()
     return render(request, 'phonebookapp/index.html', {'people': people, 'phones': phones, 'emails': emails})
@@ -82,7 +82,7 @@ def search(request):
     if not q:
         return redirect('/phonebook')
     queryset = Person.objects.annotate(name_and_surname=Concat('name', Value(' '), 'surname'))
-    people = queryset.filter(Q(phone__phone__contains=q) | Q(email__email__contains=q) | Q(name_and_surname__contains=q)).distinct()
+    people = queryset.filter(Q(phone__phone__contains=q) | Q(email__email__contains=q) | Q(name_and_surname__contains=q)).distinct().order_by('surname')
     phones = Phone.objects.all()
     emails = Email.objects.all()
     return render(request, 'phonebookapp/index.html', {'people': people, 'phones': phones, 'emails': emails, 'query': q})
