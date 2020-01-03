@@ -33,7 +33,7 @@ def addPerson(request):
 def addPhone(request, person_id):
     person = get_object_or_404(Person, pk=person_id)
     if request.method == 'POST':
-        phone_num = request.POST.get('phone')
+        phone_num = request.POST.get('phone').replace('-', '').replace(' ', '')
         phone = Phone(person=person, phone=phone_num)
         phone.save()
 
