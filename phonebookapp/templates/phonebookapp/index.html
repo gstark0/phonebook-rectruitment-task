@@ -27,8 +27,19 @@
                         <div class="contact">
                             <div class="contact-left">
                                 <div class="contact-name">{{ person.name }} {{ person.surname }}</div>
-                                <a href="#" class="contact-detail">123 123 123</a>
-                                <a href="#" class="contact-detail">jan@kowalski.pl</a>
+                                <div class="contact-details">
+                                    <div>
+                                        <span class="contact-detail">123 123 123</span>
+                                        <span class="contact-detail">123 123 123</span>
+                                    </div>
+                                    <div>
+                                        <span class="contact-detail">jan@kowalski.pl</span>
+                                    </div>
+                                </div>
+                                <div class="add-contact-detail-btns">
+                                    <a href="#">Dodaj numer</a>
+                                    <a href="#">Dodaj email</a>
+                                </div>
                             </div>
                             <div class="contact-right">
                                 <a href="{{ person.id }}/edit" class="right-link">Edytuj osobę</a>

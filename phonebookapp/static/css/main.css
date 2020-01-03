@@ -82,7 +82,7 @@ html, body {
 }
 
 .contact {
-    height: 100px;
+    padding: 20px 0;
     width: 100%;
     display: flex;
     align-items: center;
@@ -111,10 +111,23 @@ html, body {
 }
 
 .contact-name {
-    margin-bottom: 5px;
     font-size: 16px;
     font-weight: bold;
     color: #222;
+}
+
+.contact-details {
+    display: flex;
+    margin: 5px 0 6px 0;
+}
+
+.contact-details div {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-details div + div {
+    margin-left: 15px;
 }
 
 .contact-detail {
@@ -122,10 +135,13 @@ html, body {
     color: #A0A0A0;
 }
 
-.no-link {
-    text-decoration: none;
-    pointer-events: none;
-    cursor: default;
+.add-contact-detail-btns a {
+    font-size: 14px;
+    color: #A0A0A0;
+}
+
+.add-contact-detail-btns a + a {
+    margin-left: 9px;
 }
 
 /* ------ Edit/Add person ------ */
