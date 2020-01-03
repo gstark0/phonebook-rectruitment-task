@@ -55,6 +55,10 @@ html, body {
     background-color: white;
 }
 
+#contacts-container {
+    margin-bottom: 40px;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: rgba(0, 0, 0, .30);
     opacity: 1; /* Firefox */
