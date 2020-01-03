@@ -23,19 +23,19 @@
             <div class="window" id="contacts-container">
                 <input type="text" placeholder="Wyszukaj osobę ..." name="search" id="search">
                 <div id="contacts-list">
-
-                    <div class="contact">
-                        <div class="contact-left">
-                            <div class="contact-name">Jan Kowalski</div>
-                            <a href="#" class="contact-detail">123 123 123</a>
-                            <a href="#" class="contact-detail">jan@kowalski.pl</a>
+                    {% for person in people %}
+                        <div class="contact">
+                            <div class="contact-left">
+                                <div class="contact-name">{{ person.name }} {{ person.surname }}</div>
+                                <a href="#" class="contact-detail">123 123 123</a>
+                                <a href="#" class="contact-detail">jan@kowalski.pl</a>
+                            </div>
+                            <div class="contact-right">
+                                <a href="{{ person.id }}/edit" class="right-link">Edytuj osobę</a>
+                                <a href="#" class="right-link">Usuń osobę</a>
+                            </div>
                         </div>
-                        <div class="contact-right">
-                            <a href="#" class="right-link">Edytuj osobę</a>
-                            <a href="#" class="right-link">Usuń osobę</a>
-                        </div>
-                    </div>
-                    
+                    {% endfor %}    
                 </div>
             </div>
         </div>

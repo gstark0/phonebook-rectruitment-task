@@ -9,7 +9,6 @@ from .models import Person, Phone, Email
 # Create your views here.
 def index(request):
     people = Person.objects.all()
-    phones = Phone.objects.all()
     return render(request, 'phonebookapp/index.html', {'people': people})
 
 @csrf_exempt
@@ -20,7 +19,7 @@ def addPerson(request):
         surname = request.POST.get('surname')
         new_person = Person(name=name, surname=surname)
         new_person.save()
-        
+
         return redirect('/phonebook')
     else:
         return render(request, 'phonebookapp/add.html')
