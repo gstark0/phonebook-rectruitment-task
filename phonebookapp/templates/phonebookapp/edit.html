@@ -21,8 +21,8 @@
                 <div class="container-title">Edytuj osobę</div>
             </div>
             <form class="window" id="edit-container" action="../edit/" method="POST">
-                <input autocomplete="off" type="text" name="name" id="name" placeholder="Imię" value="{{ name }}">
-                <input autocomplete="off" type="text" name="surname" id="surname" placeholder="Nazwisko" value="{{ surname }}">
+                <input required autocomplete="off" type="text" name="name" id="name" placeholder="Imię" value="{{ name }}">
+                <input required autocomplete="off" type="text" name="surname" id="surname" placeholder="Nazwisko" value="{{ surname }}">
                 <div class="edit-btns">
                     <input type="submit" value="Zapisz">
                     <a href="../..">Anuluj</a>
