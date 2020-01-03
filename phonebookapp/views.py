@@ -24,11 +24,25 @@ def addPerson(request):
     else:
         return render(request, 'phonebookapp/add.html')
 
-def addPhone(request):
-    return HttpResponse('Works')
+@require_http_methods(['GET', 'POST'])
+def addPhone(request, person_id):
+    person = get_object_or_404(Person, pk=person_id)
+    if request.method == 'POST':
+        phone_num = request.POST.get('phone')
+        phone = Phone(person=person, phone=phone_num)
+        phone.save()
+    else:
+        return render(request, 'phonebookapp/add_phone.html')
 
-def addEmail(request):
-    return HttpResponse('Works')
+@require_http_methods(['GET', 'POST'])
+def addEmail(request, person_id):
+    person = get_object_or_404(Person, pk=person_id)
+    if request.method == 'POST':
+        email_addr = request.POST.get('email')
+        email = Email(person=person, email=email_addr)
+        email.save()
+    else:
+        return render(request, 'phonebookapp/add_email.html')
 
 @csrf_exempt
 @require_http_methods(['GET', 'POST'])
