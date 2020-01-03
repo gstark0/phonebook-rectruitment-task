@@ -22,8 +22,11 @@
                 <a href="{% url 'add_person' %}" id="add-contact-btn">+ Dodaj osobę</a>
             </div>
             <div class="window" id="contacts-container">
-                <form action="{% url 'search' %}" method="GET">
+                <form action="{% url 'search' %}" method="GET" id="search-container">
                     <input autocomplete="off" type="text" placeholder="Wyszukaj osobę ..." name="q" id="search" value="{{ query }}">
+                    <button type="submit">
+                        <img src="{% static 'img/search.svg' %}" alt="Wyszukaj">
+                    </button>
                 </form>
                 <div id="contacts-list">
                     {% for person in people %}
