@@ -17,7 +17,6 @@ def index(request):
     emails = Email.objects.all()
     return render(request, 'phonebookapp/index.html', {'people': people, 'phones': phones, 'emails': emails})
 
-@csrf_exempt
 @require_http_methods(['GET', 'POST'])
 def addPerson(request):
     if request.method == 'POST':
@@ -30,7 +29,6 @@ def addPerson(request):
     else:
         return render(request, 'phonebookapp/add.html')
 
-@csrf_exempt
 @require_http_methods(['GET', 'POST'])
 def addPhone(request, person_id):
     person = get_object_or_404(Person, pk=person_id)
@@ -43,7 +41,6 @@ def addPhone(request, person_id):
     else:
         return render(request, 'phonebookapp/add_phone.html')
 
-@csrf_exempt
 @require_http_methods(['GET', 'POST'])
 def addEmail(request, person_id):
     person = get_object_or_404(Person, pk=person_id)
@@ -56,7 +53,6 @@ def addEmail(request, person_id):
     else:
         return render(request, 'phonebookapp/add_email.html')
 
-@csrf_exempt
 @require_http_methods(['GET', 'POST'])
 def editPerson(request, person_id):
     person = get_object_or_404(Person, pk=person_id)
