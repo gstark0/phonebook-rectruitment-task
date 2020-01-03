@@ -3,6 +3,10 @@ from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.template import loader
+from django.db.models import Q
+
+from django.db.models import Value
+from django.db.models.functions import Concat
 
 from .models import Person, Phone, Email
 
@@ -72,3 +76,15 @@ def editPerson(request, person_id):
 
 def deletePerson(request, person_id):
     return HttpResponse(person_id)
+
+
+@require_http_methods(['GET'])
+def search(request):
+    q = request.GET.get('q')
+    if not q:
+        return redirect('/phonebook')
+    queryset = Person.objects.annotate(name_and_surname=Concat('name', Value(' '), 'surname'))
+    people = queryset.filter(Q(phone__phone__contains=q) | Q(email__email__contains=q) | Q(name_and_surname__contains=q)).distinct()
+    phones = Phone.objects.all()
+    emails = Email.objects.all()
+    return render(request, 'phonebookapp/index.html', {'people': people, 'phones': phones, 'emails': emails, 'query': q})

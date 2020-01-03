@@ -22,7 +22,9 @@
                 <a href="add" id="add-contact-btn">+ Dodaj osobę</a>
             </div>
             <div class="window" id="contacts-container">
-                <input type="text" placeholder="Wyszukaj osobę ..." name="search" id="search">
+                <form action="{% url 'search' %}" method="GET">
+                    <input type="text" placeholder="Wyszukaj osobę ..." name="q" id="search" value="{{ query }}">
+                </form>
                 <div id="contacts-list">
                     {% for person in people %}
                         <div class="contact">
