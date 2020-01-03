@@ -1,33 +1,15 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ksiązka telefoniczna</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-</head>
-<body>
-    <div id="navbar">
-        <a id="logo" href="#">Ksiązka telefoniczna</a>
+{% extends 'phonebookapp/base.html' %}
+{% block content %}
+<div class="wrapper">
+    <div class="container-titlebar">
+        <div class="container-title">Dodaj numer telefonu</div>
     </div>
-
-    <div class="container">
-        <div class="wrapper">
-            <div class="container-titlebar">
-                <div class="container-title">Dodaj numer telefonu</div>
-            </div>
-            <form class="window" id="edit-container" action="../add_phone/" method="POST">
-                <input required autocomplete="off" type="text" name="phone" id="phone" placeholder="Numer telefonu">
-                <div class="edit-btns">
-                    <input type="submit" value="Dodaj">
-                    <a href="../..">Anuluj</a>
-                </div>
-            </form>
+    <form class="window" id="edit-container" action="../add_phone/" method="POST">
+        <input required autocomplete="off" type="text" name="phone" id="phone" placeholder="Numer telefonu">
+        <div class="edit-btns">
+            <input type="submit" value="Dodaj">
+            <a href="../..">Anuluj</a>
         </div>
-    </div>
-</body>
-</html>
+    </form>
+</div>
+{% endblock %}

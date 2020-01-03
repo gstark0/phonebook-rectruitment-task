@@ -1,66 +1,50 @@
+{% extends 'phonebookapp/base.html' %}
 {% load static %}
 {% load extra_tags %}
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ksiązka telefoniczna</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-</head>
-<body>
-    <div id="navbar">
-        <a id="logo" href="{% url 'index' %}">Ksiązka telefoniczna</a>
+{% block content %}
+<div class="wrapper">
+    <div class="container-titlebar">
+        <div class="container-title">Lista osób</div>
+        <a href="{% url 'add_person' %}" id="add-contact-btn">+ Dodaj osobę</a>
     </div>
-    <div class="container">
-        <div class="wrapper">
-            <div class="container-titlebar">
-                <div class="container-title">Lista osób</div>
-                <a href="{% url 'add_person' %}" id="add-contact-btn">+ Dodaj osobę</a>
-            </div>
-            <div class="window" id="contacts-container">
-                <form action="{% url 'search' %}" method="GET" id="search-container">
-                    <input autocomplete="off" type="text" placeholder="Wyszukaj osobę ..." name="q" id="search" value="{{ query }}">
-                    <button type="submit">
-                        <img src="{% static 'img/search.svg' %}" alt="Wyszukaj">
-                    </button>
-                </form>
-                <div id="contacts-list">
-                    {% for person in people %}
-                        <div class="contact">
-                            <div class="contact-left">
-                                <div class="contact-name">{{ person.name }} {{ person.surname }}</div>
-                                <div class="contact-details">
-                                    <div>
-                                        {% for phone in phones|by_person:person %}
-                                            <span class="contact-detail">{{ phone.phone }}</span>
-                                        {% endfor %}
-                                    </div>
-                                    <div>
-                                        {% for email in emails|by_person:person %}
-                                            <span class="contact-detail">{{ email.email }}</span>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                <div class="add-contact-detail-btns">
-                                    <a href="{% url 'add_phone' person.id %}">Dodaj numer</a>
-                                    <a href="{% url 'add_email' person.id %}">Dodaj email</a>
-                                </div>
+    <div class="window" id="contacts-container">
+        <form action="{% url 'search' %}" method="GET" id="search-container">
+            <input autocomplete="off" type="text" placeholder="Wyszukaj osobę ..." name="q" id="search" value="{{ query }}">
+            <button type="submit">
+                <img src="{% static 'img/search.svg' %}" alt="Wyszukaj">
+            </button>
+        </form>
+        <div id="contacts-list">
+            {% for person in people %}
+                <div class="contact">
+                    <div class="contact-left">
+                        <div class="contact-name">{{ person.name }} {{ person.surname }}</div>
+                        <div class="contact-details">
+                            <div>
+                                {% for phone in phones|by_person:person %}
+                                    <span class="contact-detail">{{ phone.phone }}</span>
+                                {% endfor %}
                             </div>
-                            <div class="contact-right">
-                                <a href="{% url 'edit_person' person.id %}" class="right-link">Edytuj osobę</a>
-                                {% if not phones|by_person:person and not emails|by_person:person %}
-                                    <a href="{% url 'delete_person' person.id %}" class="right-link">Usuń osobę</a>
-                                {% endif %}
+                            <div>
+                                {% for email in emails|by_person:person %}
+                                    <span class="contact-detail">{{ email.email }}</span>
+                                {% endfor %}
                             </div>
                         </div>
-                    {% endfor %}    
+                        <div class="add-contact-detail-btns">
+                            <a href="{% url 'add_phone' person.id %}">Dodaj numer</a>
+                            <a href="{% url 'add_email' person.id %}">Dodaj email</a>
+                        </div>
+                    </div>
+                    <div class="contact-right">
+                        <a href="{% url 'edit_person' person.id %}" class="right-link">Edytuj osobę</a>
+                        {% if not phones|by_person:person and not emails|by_person:person %}
+                            <a href="{% url 'delete_person' person.id %}" class="right-link">Usuń osobę</a>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
+            {% endfor %}    
         </div>
     </div>
-</body>
-</html>
+</div>
+{% endblock %}
