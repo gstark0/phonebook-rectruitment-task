@@ -13,17 +13,17 @@
 </head>
 <body>
     <div id="navbar">
-        <a id="logo" href="#">Ksiązka telefoniczna</a>
+        <a id="logo" href="{% url 'index' %}">Ksiązka telefoniczna</a>
     </div>
     <div class="container">
         <div class="wrapper">
             <div class="container-titlebar">
                 <div class="container-title">Lista osób</div>
-                <a href="add" id="add-contact-btn">+ Dodaj osobę</a>
+                <a href="{% url 'add_person' %}" id="add-contact-btn">+ Dodaj osobę</a>
             </div>
             <div class="window" id="contacts-container">
                 <form action="{% url 'search' %}" method="GET">
-                    <input type="text" placeholder="Wyszukaj osobę ..." name="q" id="search" value="{{ query }}">
+                    <input autocomplete="off" type="text" placeholder="Wyszukaj osobę ..." name="q" id="search" value="{{ query }}">
                 </form>
                 <div id="contacts-list">
                     {% for person in people %}
@@ -43,13 +43,15 @@
                                     </div>
                                 </div>
                                 <div class="add-contact-detail-btns">
-                                    <a href="{{ person.id }}/add_phone">Dodaj numer</a>
-                                    <a href="{{ person.id }}/add_email">Dodaj email</a>
+                                    <a href="{% url 'add_phone' person.id %}">Dodaj numer</a>
+                                    <a href="{% url 'add_email' person.id %}">Dodaj email</a>
                                 </div>
                             </div>
                             <div class="contact-right">
-                                <a href="{{ person.id }}/edit" class="right-link">Edytuj osobę</a>
-                                <a href="#" class="right-link">Usuń osobę</a>
+                                <a href="{% url 'edit_person' person.id %}" class="right-link">Edytuj osobę</a>
+                                {% if not phones|by_person:person and not emails|by_person:person %}
+                                    <a href="{% url 'delete_person' person.id %}" class="right-link">Usuń osobę</a>
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}    

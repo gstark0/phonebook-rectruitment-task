@@ -75,7 +75,9 @@ def editPerson(request, person_id):
         return render(request, 'phonebookapp/edit.html', {'name': person.name, 'surname': person.surname})
 
 def deletePerson(request, person_id):
-    return HttpResponse(person_id)
+    person = get_object_or_404(Person, pk=person_id)
+    person.delete()
+    return redirect('/phonebook')
 
 
 @require_http_methods(['GET'])
