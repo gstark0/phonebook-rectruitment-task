@@ -15,35 +15,41 @@
             </button>
         </form>
         <div id="contacts-list">
-            {% for person in people %}
-                <div class="contact">
-                    <div class="contact-left">
-                        <div class="contact-name">{{ person.name }} {{ person.surname }}</div>
-                        <div class="contact-details">
-                            <div>
-                                {% for phone in phones|by_person:person %}
-                                    <span class="contact-detail">{{ phone.phone }}</span>
-                                {% endfor %}
+            {% if people %}
+                {% for person in people %}
+                    <div class="contact">
+                        <div class="contact-left">
+                            <div class="contact-name">{{ person.name }} {{ person.surname }}</div>
+                            <div class="contact-details">
+                                <div>
+                                    {% for phone in phones|by_person:person %}
+                                        <span class="contact-detail">{{ phone.phone }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div>
+                                    {% for email in emails|by_person:person %}
+                                        <span class="contact-detail">{{ email.email }}</span>
+                                    {% endfor %}
+                                </div>
                             </div>
-                            <div>
-                                {% for email in emails|by_person:person %}
-                                    <span class="contact-detail">{{ email.email }}</span>
-                                {% endfor %}
+                            <div class="add-contact-detail-btns">
+                                <a href="{% url 'add_phone' person.id %}">Dodaj numer</a>
+                                <a href="{% url 'add_email' person.id %}">Dodaj email</a>
                             </div>
                         </div>
-                        <div class="add-contact-detail-btns">
-                            <a href="{% url 'add_phone' person.id %}">Dodaj numer</a>
-                            <a href="{% url 'add_email' person.id %}">Dodaj email</a>
+                        <div class="contact-right">
+                            <a href="{% url 'edit_person' person.id %}" class="right-link">Edytuj osobę</a>
+                            {% if not phones|by_person:person and not emails|by_person:person %}
+                                <a href="{% url 'delete_person' person.id %}" class="right-link">Usuń osobę</a>
+                            {% endif %}
                         </div>
                     </div>
-                    <div class="contact-right">
-                        <a href="{% url 'edit_person' person.id %}" class="right-link">Edytuj osobę</a>
-                        {% if not phones|by_person:person and not emails|by_person:person %}
-                            <a href="{% url 'delete_person' person.id %}" class="right-link">Usuń osobę</a>
-                        {% endif %}
+                {% endfor %}
+            {% else %}
+                    <div id="no-results">
+                        Brak wyników
                     </div>
-                </div>
-            {% endfor %}    
+            {% endif %}   
         </div>
     </div>
 </div>
