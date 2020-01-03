@@ -1,4 +1,5 @@
 {% load static %}
+{% load extra_tags %}
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -29,11 +30,14 @@
                                 <div class="contact-name">{{ person.name }} {{ person.surname }}</div>
                                 <div class="contact-details">
                                     <div>
-                                        <span class="contact-detail">123 123 123</span>
-                                        <span class="contact-detail">123 123 123</span>
+                                        {% for phone in phones|by_person:person %}
+                                            <span class="contact-detail">{{ phone.phone }}</span>
+                                        {% endfor %}
                                     </div>
                                     <div>
-                                        <span class="contact-detail">jan@kowalski.pl</span>
+                                        {% for email in emails|by_person:person %}
+                                            <span class="contact-detail">{{ email.email }}</span>
+                                        {% endfor %}
                                     </div>
                                 </div>
                                 <div class="add-contact-detail-btns">

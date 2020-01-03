@@ -9,7 +9,9 @@ from .models import Person, Phone, Email
 # Create your views here.
 def index(request):
     people = Person.objects.all()
-    return render(request, 'phonebookapp/index.html', {'people': people})
+    phones = Phone.objects.all()
+    emails = Email.objects.all()
+    return render(request, 'phonebookapp/index.html', {'people': people, 'phones': phones, 'emails': emails})
 
 @csrf_exempt
 @require_http_methods(['GET', 'POST'])
@@ -24,6 +26,7 @@ def addPerson(request):
     else:
         return render(request, 'phonebookapp/add.html')
 
+@csrf_exempt
 @require_http_methods(['GET', 'POST'])
 def addPhone(request, person_id):
     person = get_object_or_404(Person, pk=person_id)
@@ -31,9 +34,12 @@ def addPhone(request, person_id):
         phone_num = request.POST.get('phone')
         phone = Phone(person=person, phone=phone_num)
         phone.save()
+
+        return redirect('/phonebook')
     else:
         return render(request, 'phonebookapp/add_phone.html')
 
+@csrf_exempt
 @require_http_methods(['GET', 'POST'])
 def addEmail(request, person_id):
     person = get_object_or_404(Person, pk=person_id)
@@ -41,6 +47,8 @@ def addEmail(request, person_id):
         email_addr = request.POST.get('email')
         email = Email(person=person, email=email_addr)
         email.save()
+
+        return redirect('/phonebook')
     else:
         return render(request, 'phonebookapp/add_email.html')
 
