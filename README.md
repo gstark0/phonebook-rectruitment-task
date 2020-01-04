@@ -10,7 +10,7 @@ Aplikacja książki telefonicznej w Django. Można ją przetestować pod adresem
 ### Jak uruchomić?
 `python manage.py migrate`
 
-Plik fixtures.json zawiera 20 przykładowych kontaktów, możesz je wczytać przy pomocy polecenia:
+Plik fixtures.json zawiera 20 przykładowych kontaktów, możesz je wczytać przy pomocy polecenia:<br>
 `python manage.py loaddata fixtures.json`
 
 `python manage.py runserver`
