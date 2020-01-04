@@ -15,7 +15,7 @@ Plik fixtures.json zawiera 20 przykładowych kontaktów, możesz je wczytać prz
 
 `python manage.py runserver`
 
-Serwer testowy działa pod adresem `http://127.0.0.1:8000/`
+Serwer testowy z aplikacją działa pod adresem `http://127.0.0.1:8000/phonebook`
 
 ### Zdjęcia z aplikacji
 ![Książka telefoniczna](https://raw.githubusercontent.com/gstark0/phonebook-rectruitment-task/master/screenshots/phonebook.png)
